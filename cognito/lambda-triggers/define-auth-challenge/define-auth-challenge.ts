@@ -57,12 +57,14 @@ export const handler: DefineAuthChallengeTriggerHandler = async (event) => {
 function deny(event: DefineAuthChallengeTriggerEvent) {
   event.response.issueTokens = false;
   event.response.failAuthentication = true;
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }
 
 function allow(event: DefineAuthChallengeTriggerEvent) {
   event.response.issueTokens = true;
   event.response.failAuthentication = false;
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }
 
@@ -70,6 +72,7 @@ function customChallenge(event: DefineAuthChallengeTriggerEvent) {
   event.response.issueTokens = false;
   event.response.failAuthentication = false;
   event.response.challengeName = "CUSTOM_CHALLENGE";
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }
 

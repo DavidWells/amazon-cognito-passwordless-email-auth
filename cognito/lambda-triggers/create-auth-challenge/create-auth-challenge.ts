@@ -48,7 +48,7 @@ export const handler: CreateAuthChallengeTriggerHandler = async (event) => {
     // The last challenge was to provide a secret login code, and since we are
     // here that can only mean that the user provided a wrong value, maybe a typo
     // We'll give the user another chance to enter the existing secret login code
-    respondToExistingSecretLoginCode(event, lastChallenge.secretLoginCode);
+    return respondToExistingSecretLoginCode(event, lastChallenge.secretLoginCode);
   }
 };
 
@@ -102,6 +102,7 @@ function chooseEmailOrSms(event: CreateAuthChallengeTriggerEvent) {
     privateChallengeParameters: {},
     publicChallengeParameters,
   };
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }
 
@@ -126,6 +127,7 @@ async function respondToNewSecretLoginCode(
     },
     publicChallengeParameters,
   };
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }
 
@@ -144,5 +146,6 @@ function respondToExistingSecretLoginCode(
     },
     publicChallengeParameters,
   };
+  console.log(JSON.stringify(event, null, 2));
   return event;
 }

@@ -19,5 +19,6 @@ export const handler: PostAuthenticationTriggerHandler = async event => {
       };
       await cup.adminUpdateUserAttributes(params).promise();
     }
+    console.log(JSON.stringify(event, null, 2));
     return event;
 };

@@ -4,25 +4,37 @@
 -->
 
 <mat-card fxFlex="1 1 auto" ngClass="app-card">
-
   <mat-card-header>
     <mat-icon mat-card-avatar>lock</mat-icon>
     <mat-card-title>Please Sign In</mat-card-title>
-    <mat-card-subtitle>Enter your e-mail address or phone number, and we'll send you a one-time secret sign-in code</mat-card-subtitle>
+    <mat-card-subtitle
+      >Enter your e-mail address to initiate sign-in</mat-card-subtitle
+    >
   </mat-card-header>
 
   <mat-card-content>
     <form fxLayout="column">
       <mat-form-field>
-        <input matInput placeholder="E-mail address or phone number" [formControl]="emailOrPhoneNumber" type="text" name="emailOrPhoneNumber"
-          autocomplete="username email tel" />
+        <input
+          matInput
+          placeholder="E-mail address"
+          [formControl]="email"
+          type="email"
+          name="email"
+          autocomplete="username email"
+        />
       </mat-form-field>
     </form>
   </mat-card-content>
 
   <mat-card-actions>
     <div fxFlex></div>
-    <button mat-stroked-button color="primary" (click)="signIn()" [disabled]="(busy | async)">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="signIn()"
+      [disabled]="busy | async"
+    >
       <div fxFlex></div>
       <div *ngIf="!(busy | async)">SEND SIGN-IN CODE</div>
       <mat-spinner *ngIf="busy | async" [diameter]="35"></mat-spinner>
@@ -35,7 +47,9 @@
 
   <mat-card-content>
     <div fxFlex></div>
-    <p>Not a member yet? <a routerLink='/sign-up' routerLinkActive="active">Sign up</a></p>
+    <p>
+      Not a member yet?
+      <a routerLink="/sign-up" routerLinkActive="active">Sign up</a>
+    </p>
   </mat-card-content>
-
 </mat-card>
