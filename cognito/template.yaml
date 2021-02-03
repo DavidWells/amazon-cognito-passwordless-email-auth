@@ -55,6 +55,7 @@ Resources:
             - Effect: Allow
               Action:
                 - ses:SendEmail
+                - sns:Publish
               Resource: "*"
 
   VerifyAuthChallengeResponse:
@@ -122,6 +123,10 @@ Resources:
           AttributeDataType: String
           Mutable: true
           Required: true
+        - Name: phone_number
+          AttributeDataType: String
+          Mutable: true
+          Required: false
       Policies:
         PasswordPolicy:
           MinimumLength: 8
@@ -131,6 +136,7 @@ Resources:
           RequireUppercase: false
       UsernameAttributes:
         - email
+        - phone_number
       MfaConfiguration: "OFF"
       LambdaConfig:
         CreateAuthChallenge: !GetAtt CreateAuthChallenge.Arn

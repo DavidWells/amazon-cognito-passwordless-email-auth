@@ -4,6 +4,7 @@
 import { PreSignUpTriggerHandler } from 'aws-lambda';
 
 export const handler: PreSignUpTriggerHandler = async event => {
+    console.log(JSON.stringify(event, null, 2));
     event.response.autoConfirmUser = true;
     return event;
 };
