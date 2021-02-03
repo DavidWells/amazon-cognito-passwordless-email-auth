@@ -15,6 +15,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { PrivateComponent } from './private/private.component';
 import { AnswerChallengeComponent } from './answer-challenge/answer-challenge.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
+import { ChooseMediumComponent } from "./choose-medium/choose-medium.component";
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -40,7 +41,8 @@ const MAT_MODULES = [
     PrivateComponent,
     AnswerChallengeComponent,
     SignOutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ChooseMediumComponent
   ],
   imports: [
     BrowserModule,

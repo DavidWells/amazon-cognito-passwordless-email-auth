@@ -15,7 +15,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SignInComponent {
 
-  public email = new FormControl('');
+  public emailOrPhoneNumber = new FormControl('');
 
   private busy_ = new BehaviorSubject(false);
   public busy = this.busy_.asObservable();
@@ -29,8 +29,12 @@ export class SignInComponent {
     this.busy_.next(true);
     this.errorMessage_.next('');
     try {
-      await this.auth.signIn(this.email.value);
-      this.router.navigate(['/enter-secret-code']);
+      const challenge = await this.auth.signIn(this.emailOrPhoneNumber.value);
+      if (challenge === "CHOOSE_EMAIL_OR_SMS") {
+        this.router.navigate(['/choose-email-or-sms']);
+      } else {
+        this.router.navigate(['/enter-secret-code']);
+      }
     } catch (err) {
       this.errorMessage_.next(err.message || err);
     } finally {

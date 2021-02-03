@@ -10,6 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { PrivateComponent } from './private/private.component';
 import { AnswerChallengeComponent } from './answer-challenge/answer-challenge.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ChooseMediumComponent } from "./choose-medium/choose-medium.component";
 
 import { IsAuthenticated, IsNotAuthenticated } from './auth.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'enter-secret-code', component: AnswerChallengeComponent, canActivate: [IsNotAuthenticated] },
   { path: 'sign-out', component: SignOutComponent, canActivate: [IsAuthenticated] },
   { path: 'private', component: PrivateComponent, canActivate: [IsAuthenticated] },
+  { path: 'choose-email-or-sms', component: ChooseMediumComponent, canActivate: [IsNotAuthenticated] },
   { path: '', redirectTo: '/private', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

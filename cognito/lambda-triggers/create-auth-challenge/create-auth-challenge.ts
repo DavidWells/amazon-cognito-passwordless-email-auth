@@ -17,7 +17,12 @@ export const handler: CreateAuthChallengeTriggerHandler = async (event) => {
   if (!event.request.session || !event.request.session.length) {
     // This is the first time Create Auth Challenge is called
     // Create a dummy challenge, allowing the user to send a challenge response
-    // with client metadata
+    // with client metadata, that can be used to choose wether to receive the
+    // secret sign-in code via e-mail or SMS.
+    // However, only provide this choice if we know the user's phone number
+    if (!event.request.userAttributes.phone_number) {
+      return respondToNewSecretLoginCode(event, "email");
+    }
     return chooseEmailOrSms(event);
   }
 

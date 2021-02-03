@@ -8,14 +8,14 @@
   <mat-card-header>
     <mat-icon mat-card-avatar>lock</mat-icon>
     <mat-card-title>Please Sign In</mat-card-title>
-    <mat-card-subtitle>Enter your e-mail address and we'll send you a one-time secret sign-in code</mat-card-subtitle>
+    <mat-card-subtitle>Enter your e-mail address or phone number, and we'll send you a one-time secret sign-in code</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     <form fxLayout="column">
       <mat-form-field>
-        <input matInput placeholder="E-mail" [formControl]="email" type="email" email name="email"
-          autocomplete="username email" />
+        <input matInput placeholder="E-mail address or phone number" [formControl]="emailOrPhoneNumber" type="text" name="emailOrPhoneNumber"
+          autocomplete="username email tel" />
       </mat-form-field>
     </form>
   </mat-card-content>

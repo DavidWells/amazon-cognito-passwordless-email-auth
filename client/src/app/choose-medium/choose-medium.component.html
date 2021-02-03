@@ -1,0 +1,33 @@
+<!--
+   Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+   SPDX-License-Identifier: MIT-0
+-->
+
+<mat-card fxFlex="1 1 auto" ngClass="app-card">
+
+  <mat-card-header>
+    <mat-icon mat-card-avatar>lock</mat-icon>
+    <mat-card-title>Choose e-mail or SMS</mat-card-title>
+    <mat-card-subtitle>Do you want to receive the secret sign-in code via e-mail or SMS?</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions>
+    <div fxFlex></div>
+    <button mat-stroked-button color="primary" (click)="chooseEmailOrSms('email')" [disabled]="(busy | async)">
+      <div fxFlex></div>
+      <div *ngIf="!(busy | async)">E-MAIL</div>
+      <mat-spinner *ngIf="(busy | async) && (choice | async) === 'email'" [diameter]="35"></mat-spinner>
+      <div fxFlex></div>
+    </button>
+    <button mat-stroked-button color="primary" (click)="chooseEmailOrSms('sms')" [disabled]="(busy | async)">
+      <div fxFlex></div>
+      <div *ngIf="!(busy | async)">SMS</div>
+      <mat-spinner *ngIf="(busy | async) && (choice | async) === 'sms'" [diameter]="35"></mat-spinner>
+      <div fxFlex></div>
+    </button>
+    <div fxFlex></div>
+  </mat-card-actions>
+
+  <p *ngIf="errorMessage | async">{{ errorMessage | async }}</p>
+
+</mat-card>
